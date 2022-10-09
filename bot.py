@@ -23,7 +23,7 @@ def rendo():
     else:
         return "YOQ !!!"
 
-
+is_echo = True
 bot = telebot.TeleBot(config.token_admin)
 
 @bot.message_handler(commands=['help'])
@@ -31,7 +31,8 @@ def start_message(message):
 	bot.send_message(message.chat.id, "/soat soatni bilish uchun")
 	bot.send_message(message.chat.id, "/maylimi ruhsat birishim bermasligim uchun")
 	bot.send_message(message.chat.id, "/info uzingiz haqingizda malumon uchun")
-    # bot.send_message(message.chat.id, "/man_qaytta uzingiz haqingizda malumon uchun")
+	bot.send_message(message.chat.id, "/man_qaytta qayrdaligingizni bilish uchun")
+	bot.send_message(message.chat.id, "/img randomni rasim tashlayman")
 
 # --------------- commands------------#
 
@@ -69,27 +70,29 @@ def start_message(message):
 #---------------- text command -----------------#
 @bot.message_handler(commands=['img'])
 def image_message(message):
-    
     img_url = "https://random.imagecdn.app/500/150"
     img = requests.get(img_url).content
     bot.send_chat_action(message.chat.id, 'upload_photo')
     bot.send_photo(message.chat.id, img, reply_to_message_id=message.chat.id)
     bot.send_message(message.chat.id, "Mana rasm " +  str(message.from_user.first_name))
-
+@bot.message_handler(commands=['/Stop'])
+def stop_echo_message(message):
+    is_echo = False
+@bot.message_handler(commands=['/start'])
+def stop_echo_message(message):
+    is_echo = True
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
-    if message.text == "нахуй":
-        bot.send_message(message.chat.id, message.from_user.first_name+" Сукинма !!!")
-    if message.text == "Пашол":
-        bot.send_message(message.chat.id, message.from_user.first_name+" Сукинма !!!")
-    
-    if message.text == "салом":
-        # bot.send_message(message.chat.id, message.from_user.first_name+" салом !!!")
-        bot.send_message(message.chat.id, message.from_user.first_name+" салом !!!")
+    if message.text == "нахуй" or message.text == "Пашол" or message.text == "Хе онени" or message.text == "далбаёб" or message.text == "пидарас":
+        bot.send_message(message.chat.id, message.from_user.first_name+" Сукинма !!! 😡🤬")
+
+    if message.text == "салом" or message.text == 'salom' or message.text == 'alo':
+        bot.send_message(message.chat.id, message.from_user.first_name+" салом !!! \n bormi sanam bitta uzim ziriktim ku \n qolganla qaytta ? 🤨")
     elif message.text == "/help":
         bot.send_message(message.chat.id, "Напиши Привет")
     else:
-        bot.send_message(message.chat.id, message.text)
+        if is_echo:
+            bot.send_message(message.chat.id, message.text)
 
 if __name__ == '__main__':
      bot.infinity_polling()
