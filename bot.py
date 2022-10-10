@@ -34,6 +34,7 @@ def start_message(message):
 	bot.send_message(message.chat.id, "/man_qaytta qayrdaligingizni bilish uchun ℹ️")
 	bot.send_message(message.chat.id, "/img randomni rasim tashlayman 🏞🗾🌁🌃")
 	bot.send_message(message.chat.id, "/ummon_link ummonni qushiqlarini silkasini beraman 😎")
+	bot.send_message(message.chat.id, "/sinifdoshlar_instagrami sinifdoshlani instagramdaygi profillari 📱")
 
 # --------------- commands------------#
 
@@ -87,7 +88,11 @@ def stop_echo_message(message):
 @bot.message_handler(commands=['ummon_link'])
 def send_ummon_link(message):
     bot.send_message(message.chat.id, 'OOOO mana haqiqy bola ' + str(message.from_user.first_name) + ' \nUmmon busa Ummon da \nhttp://zamonaviy.com/index/0-4 \n👆👆👆Ummonni barcha qushiqlari \n https://play.google.com/store/apps/details?id=umon.qoshiqlar&hl=ru&gl=US\n👆👆👆 Ummon qushiqlari 2022 programmasi \nhttps://www.youtube.com/watch?v=5bEChjylcEQ \n 👆👆👆 Qnady unutting !!')
-
+@bot.message_handler(commands=['sinifdoshlar_instagrami'])
+def sinifdoshlar_ingtagtami(message):
+	bot.send_message(message.chat.id, 'SINIGDOSHLAR INSTAGRAMI 📺 \nBehruz😎 👉 https://www.instagram.com/behruz_1106_/ \nSanandar(Khabib)😏 👉 https://www.instagram.com/samandar_h0813/ \n Samandar 😃 👉 https://www.instagram.com/_samandar_haydarov_/ \n Bobur 🤠 👉 https://www.instagram.com/bobur_gr88/ \n Usmonjon 🤑 👉 https://www.instagram.com/usmonjo_2005_/ \n Behzod 🙂 👉 https://www.instagram.com/behzod_2005_/ \n Husan 🤨 👉 https://www.instagram.com/bokievkhusanzhon/ \n Ohunjon 😊 👉 https://www.instagram.com/ohun.jon09/ \n Mehruz 🧑‍💻 👉 https://www.instagram.com/mehruz_rahimi/ \n Ekhson 😝 👉 https://www.instagram.com/ekhson8146/' )
+    # 'SINIGDOSHLAR INSTAGRAMI 📺 \nBehruz😎 👉 https://www.instagram.com/behruz_1106_/ \nSanandar(Khabib)😏 👉 https://www.instagram.com/samandar_h0813/ \n Samandar 😃 👉 https://www.instagram.com/_samandar_haydarov_/ \n Bobur 🤠 👉 https://www.instagram.com/bobur_gr88/ \n Usmonjon 🤑 👉 https://www.instagram.com/usmonjo_2005_/ \n Behzod 🙂 👉 https://www.instagram.com/behzod_2005_/ \n Husan 🤨 👉 https://www.instagram.com/bokievkhusanzhon/ \n Ohunjon 😊 👉 https://www.instagram.com/ohun.jon09/ \n Mehruz 🧑‍💻 👉 https://www.instagram.com/mehruz_rahimi/ \n Ekhson 😝 👉 https://www.instagram.com/ekhson8146/ \n '
+    # bot.send_message(message.chat_id, 'SINIGDOSHLAR INSTAGRAMI 📺 \nBehruz😎 👉 https://www.instagram.com/behruz_1106_/ \nSanandar(Khabib)😏 👉 https://www.instagram.com/samandar_h0813/ \n Samandar 😃 👉 https://www.instagram.com/_samandar_haydarov_/ \n Bobur 🤠 👉 https://www.instagram.com/bobur_gr88/ \n Usmonjon 🤑 👉 https://www.instagram.com/usmonjo_2005_/ \n Behzod 🙂 👉 https://www.instagram.com/behzod_2005_/ \n Husan 🤨 👉 https://www.instagram.com/bokievkhusanzhon/ \n Ohunjon 😊 👉 https://www.instagram.com/ohun.jon09/ \n Mehruz 🧑‍💻 👉 https://www.instagram.com/mehruz_rahimi/ \n Ekhson 😝 👉 https://www.instagram.com/ekhson8146/')
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     if message.text == "нахуй" or message.text == "Пашол" or message.text == "Хе онени" or message.text == "далбаёб" or message.text == "пидарас":
@@ -97,9 +102,9 @@ def get_text_messages(message):
         bot.send_message(message.chat.id, message.from_user.first_name+" салом !!! \n bormi sanam bitta uzim ziriktim ku \n qolganla qaytta ? 🤨")
     elif message.text == "/help":
         bot.send_message(message.chat.id, "Напиши Привет")
-    else:
-        if is_echo == True:
-            bot.send_message(message.chat.id, message.text)
+    # else:
+    #     if is_echo == True:
+    #         bot.send_message(message.chat.id, message.text)
 
 if __name__ == '__main__':
      bot.infinity_polling()
