@@ -28,11 +28,12 @@ bot = telebot.TeleBot(config.token_admin)
 
 @bot.message_handler(commands=['help'])
 def start_message(message):
-	bot.send_message(message.chat.id, "/soat soatni bilish uchun")
-	bot.send_message(message.chat.id, "/maylimi ruhsat birishim bermasligim uchun")
-	bot.send_message(message.chat.id, "/info uzingiz haqingizda malumon uchun")
-	bot.send_message(message.chat.id, "/man_qaytta qayrdaligingizni bilish uchun")
-	bot.send_message(message.chat.id, "/img randomni rasim tashlayman")
+	bot.send_message(message.chat.id, "/soat soatni bilish uchun ⏱")
+	bot.send_message(message.chat.id, "/maylimi ruhsat birishim bermasligim uchun 🆗🚫")
+	bot.send_message(message.chat.id, "/info uzingiz haqingizda malumon uchun 💁‍♂️💁")
+	bot.send_message(message.chat.id, "/man_qaytta qayrdaligingizni bilish uchun ℹ️")
+	bot.send_message(message.chat.id, "/img randomni rasim tashlayman 🏞🗾🌁🌃")
+	bot.send_message(message.chat.id, "/ummon_link ummonni qushiqlarini silkasini beraman 😎")
 
 # --------------- commands------------#
 
@@ -83,6 +84,10 @@ def stop_echo_message(message):
 def stop_echo_message(message):
     is_echo = True
     bot.send_message(message.chat.id, str(is_echo))
+@bot.message_handler(commands=['ummon_link'])
+def send_ummon_link(message):
+    bot.send_message(message.chat.id, 'OOOO mana haqiqy bola ' + str(message.from_user.first_name) + ' \nUmmon busa Ummon da \nhttp://zamonaviy.com/index/0-4 \n👆👆👆Ummonni barcha qushiqlari \n https://play.google.com/store/apps/details?id=umon.qoshiqlar&hl=ru&gl=US\n👆👆👆 Ummon qushiqlari 2022 programmasi \nhttps://www.youtube.com/watch?v=5bEChjylcEQ \n 👆👆👆 Qnady unutting !!')
+
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     if message.text == "нахуй" or message.text == "Пашол" or message.text == "Хе онени" or message.text == "далбаёб" or message.text == "пидарас":
