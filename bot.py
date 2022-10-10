@@ -53,14 +53,17 @@ def rendo():
 # Send instruction about this bot
 @bot.message_handler(commands=['help'])
 def start_message(message):
-	bot.send_message(message.chat.id, "/soat soatni bilish uchun ⏱")
-	bot.send_message(message.chat.id, "/maylimi ruhsat birishim bermasligim uchun 🆗🚫")
-	bot.send_message(message.chat.id, "/info uzingiz haqingizda malumon uchun 💁‍♂️💁")
-	bot.send_message(message.chat.id, "/man_qaytta qayrdaligingizni bilish uchun ℹ️")
-	bot.send_message(message.chat.id, "/img randomni rasim tashlayman 🏞🗾🌁🌃")
-	bot.send_message(message.chat.id, "/ummon_link ummonni qushiqlarini silkasini beraman 😎")
-	bot.send_message(message.chat.id, "/sinifdoshlar_instagrami sinifdoshlani instagramdaygi profillari 📱")
-	bot.send_message(message.chat.id, "/hazil Birorta hazil tashlayman 😂")
+
+	bot.send_message(message.chat.id, "/soat soatni bilish uchun ⏱ \n/maylimi ruhsat birishim bermasligim uchun 🆗🚫 \n/info uzingiz haqingizda malumon uchun 💁‍♂️💁")
+
+	# bot.send_message(message.chat.id, "/soat soatni bilish uchun ⏱")
+	# bot.send_message(message.chat.id, "/maylimi ruhsat birishim bermasligim uchun 🆗🚫")
+	# bot.send_message(message.chat.id, "/info uzingiz haqingizda malumon uchun 💁‍♂️💁")
+	# bot.send_message(message.chat.id, "/man_qaytta qayrdaligingizni bilish uchun ℹ️")
+	# bot.send_message(message.chat.id, "/img randomni rasim tashlayman 🏞🗾🌁🌃")
+	# bot.send_message(message.chat.id, "/ummon_link ummonni qushiqlarini silkasini beraman 😎")
+	# bot.send_message(message.chat.id, "/sinifdoshlar_instagrami sinifdoshlani instagramdaygi profillari 📱")
+	# bot.send_message(message.chat.id, "/hazil Birorta hazil tashlayman 😂")
 
 # --------------- commands------------#
 
@@ -85,8 +88,10 @@ def start_message(message):
 @bot.message_handler(commands=['man_qaytta'])
 def start_message(message):
 
-    if message.from_user.first_name == "Samandar":
+    if message.from_user.first_name == "Samandar" or message.from_user.first_name == 'Усмонжон':
 	    bot.send_message(message.chat.id, "Toshloq" )
+    if message.from_user.first_name == "_{=B©b¥®=}_":
+        bot.send_message(message.chat.id, "Hoshim Qishloq" )
     else:
 	    bot.send_message(message.chat.id, "Qishloq" )
 
