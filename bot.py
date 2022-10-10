@@ -75,12 +75,14 @@ def image_message(message):
     bot.send_chat_action(message.chat.id, 'upload_photo')
     bot.send_photo(message.chat.id, img, reply_to_message_id=message.chat.id)
     bot.send_message(message.chat.id, "Mana rasm " +  str(message.from_user.first_name))
-@bot.message_handler(commands=['/Stop'])
+@bot.message_handler(commands=['stop'])
 def stop_echo_message(message):
     is_echo = False
-@bot.message_handler(commands=['/start'])
+    bot.send_message(message.chat.id, str(is_echo))
+@bot.message_handler(commands=['start'])
 def stop_echo_message(message):
     is_echo = True
+    bot.send_message(message.chat.id, str(is_echo))
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     if message.text == "нахуй" or message.text == "Пашол" or message.text == "Хе онени" or message.text == "далбаёб" or message.text == "пидарас":
