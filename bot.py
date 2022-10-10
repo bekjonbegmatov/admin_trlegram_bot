@@ -93,7 +93,7 @@ def get_text_messages(message):
     elif message.text == "/help":
         bot.send_message(message.chat.id, "Напиши Привет")
     else:
-        if is_echo:
+        if is_echo == True:
             bot.send_message(message.chat.id, message.text)
 
 if __name__ == '__main__':
