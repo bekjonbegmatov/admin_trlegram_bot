@@ -72,7 +72,8 @@ def start_message(message):
     condition = c['condition']
     text = condition['text']
     icon = condition['icon']
-    bot.send_message(message.chat_id, str(temp_c) +'\n'+ str(temp_f) +'\n'+ str(text) +'\n'+ str(icon))
+    bot.send_message(message.chat.id, str(temp_c) +'\n'+ str(temp_f) +'\n'+ str(text) +'\n'+ str(icon))
+    # bot.send_message(message.chat_id, str(temp_c) +'\n'+ str(temp_f) +'\n'+ str(text) +'\n'+ str(icon))
     # pass
 
 @bot.message_handler(commands=['soat'])
