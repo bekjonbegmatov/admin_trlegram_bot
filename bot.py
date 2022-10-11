@@ -7,7 +7,6 @@ from PIL import Image
 from telebot import types 
 import random
 from datetime import datetime
-import youtube_dl
 
 # Vorebls 
 sukinishla = ['']
@@ -167,34 +166,6 @@ def send_ummon_link(message):
 @bot.message_handler(commands=['sinifdoshlar_instagrami'])
 def sinifdoshlar_ingtagtami(message):
 	bot.send_message(message.chat.id, 'SINIGDOSHLAR INSTAGRAMI 📺 \nBehruz😎 👉 https://www.instagram.com/behruz_1106_/ \nSanandar(Khabib)😏 👉 https://www.instagram.com/samandar_h0813/ \n Samandar 😃 👉 https://www.instagram.com/_samandar_haydarov_/ \n Bobur 🤠 👉 https://www.instagram.com/bobur_gr88/ \n Usmonjon 🤑 👉 https://www.instagram.com/usmonjo_2005_/ \n Behzod 🙂 👉 https://www.instagram.com/behzod_2005_/ \n Husan 🤨 👉 https://www.instagram.com/bokievkhusanzhon/ \n Ohunjon 😊 👉 https://www.instagram.com/ohun.jon09/ \n Mehruz 🧑‍💻 👉 https://www.instagram.com/mehruz_rahimi/ \n Ekhson 😝 👉 https://www.instagram.com/ekhson8146/' )
-
-ydl = youtube_dl.YoutubeDL({'outtmpl': '%(id)s%(ext)s'})
-
-@bot.message_handler(commands=['ytdl'])
-def down(msg):
-    args = msg.text.split()[1]
-    try:
-        with ydl:
-            result = ydl.extract_info(
-                args,
-                download=False  # We just want to extract the info
-            )
-
-        if 'entries' in result:
-            # Can be a playlist or a list of videos
-            video = result['entries'][0]
-        else:
-            # Just a video
-            video = result
-        
-        for i in video['formats']:
-            link = '<a href=\"' + i['url'] + '\">' + 'link' + '</a>'
-            if i.get('format_note'):
-                bot.reply_to(msg, 'Quality-' + i['format_note'] + ': ' + link, parse_mode='HTML')
-            else:
-                bot.reply_to(msg, link, parse_mode='HTML', disable_notification=True)
-    except:
-        bot.reply_to(msg, 'This can\'t be downloaded by me')
 
 # text commands 
 
