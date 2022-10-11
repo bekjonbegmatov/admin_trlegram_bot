@@ -79,7 +79,7 @@ def start_message(message):
     img = requests.get(img_url).content
     bot.send_chat_action(message.chat.id, 'upload_photo')
     bot.send_photo(message.chat.id, img, reply_to_message_id=message.chat.id)
-    bot.send_message(message.chat.id, str(temp_c) +'\n'+ str(temp_f) +'\n'+ str(text) +'\n'+ str(icon))
+    bot.send_message(message.chat.id, str(temp_c) +'\n'+ str(temp_f) +'\n'+ str(text) +'\n'+ str(icon) + "\n hello")
 
 
     # bot.send_message(message.chat_id, str(temp_c) +'\n'+ str(temp_f) +'\n'+ str(text) +'\n'+ str(icon))
