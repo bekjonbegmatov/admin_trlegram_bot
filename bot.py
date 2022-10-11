@@ -7,6 +7,7 @@ from PIL import Image
 from telebot import types 
 import random
 from datetime import datetime
+import youtube_dl
 
 # Vorebls 
 sukinishla = ['']
