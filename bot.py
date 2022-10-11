@@ -178,7 +178,7 @@ def get_text_messages(message):
         bot.send_message(message.chat.id, message.from_user.first_name+" салом !!! \n bormi sanam bitta uzim ziriktim ku \n qolganla qaytta ? 🤨")
     elif message.text == "/help":
         bot.send_message(message.chat.id, "Напиши Привет")
-    print(message)
+    # print(message)
     # else:
     #     if is_echo == True:
     #         bot.send_message(message.chat.id, message.text)
