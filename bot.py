@@ -65,6 +65,8 @@ def start_message(message):
 # --------------- commands------------#
 @bot.message_handler(commands=['havo'])
 def start_message(message):
+
+
     data = requests.get(locaturl)
     c = data.json()['current']
     temp_c = c['temp_c']
@@ -72,7 +74,14 @@ def start_message(message):
     condition = c['condition']
     text = condition['text']
     icon = condition['icon']
+
+    img_url = "https:" + str(icon)
+    img = requests.get(img_url).content
+    bot.send_chat_action(message.chat.id, 'upload_photo')
+    bot.send_photo(message.chat.id, img, reply_to_message_id=message.chat.id)
     bot.send_message(message.chat.id, str(temp_c) +'\n'+ str(temp_f) +'\n'+ str(text) +'\n'+ str(icon))
+
+
     # bot.send_message(message.chat_id, str(temp_c) +'\n'+ str(temp_f) +'\n'+ str(text) +'\n'+ str(icon))
     # pass
 
