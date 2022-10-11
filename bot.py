@@ -20,14 +20,19 @@ hazilla = [
     'Yozgi ish jadvali:\nPashshalar uchun - 05:00dan 20:00 gacha.\nChivinlar uchun - 20:00dan 05:00 gacha.',
     '— Jarohatlovchi qurolingizni ozingiz bilan olvoldingizmi?\n— Ha, albatta. Mana, tilim joyida turibdi.',
     '— Vanihoyat, "jinnini yoqish"ni organib oldim. Juda foydali ekan.\n— Sen "ochirishni" organishing kerak edi-ku!',
+    'Dam olish uchun Limpopoga borishga pulingiz yetmasa, Turkiyaga boring...!',
+    '2-3 yildan keyin umuman kasal bolmasligimiz kerak. Chunki hozir onlayn oqigan talaba vrachlar institutni bitirib ish boshlashadi',
+    '— Qoshnilarda nima gaplar?\n— Yana odatdagidek, sanksiyalar olishdi.\n— Paketga solib berishdimi?',
+    'Shu kunlarda odamlar latifa va hazillarni tushunmay qolishdi. Ular buni narx-navodagi yana bir yangilik deb oylashmoqda.',
 ]
     # echo bot setting defoult value is False
 is_echo = True
     # Our bot 
 bot = telebot.TeleBot(config.token_admin)
-# url for random image
+    # url for random image
 url='https://random.imagecdn.app/500/150'
-
+    # url for weather
+locaturl = "https://api.weatherapi.com/v1/current.json?key=f68b6746b6504d11ad2124737223004&q=Gulakandoz&aqi=no"
 # function retutns time 
 def time():
     now = datetime.now()
@@ -55,16 +60,20 @@ def rendo():
 def start_message(message):
 
 	bot.send_message(message.chat.id, "/soat soatni bilish uchun ⏱ \n/maylimi ruhsat birishim bermasligim uchun 🆗🚫 \n/info uzingiz haqingizda malumon uchun 💁‍♂️💁 \n/man_qaytta qayrdaligingizni bilish uchun ℹ️ \n/img randomni rasim tashlayman 🏞🗾🌁🌃\n/ummon_link ummonni qushiqlarini silkasini beraman 😎 \n/sinifdoshlar_instagrami sinifdoshlani instagramdaygi profillari 📱\n/hazil Birorta hazil tashlayman 😂")
-	# bot.send_message(message.chat.id, "/soat soatni bilish uchun ⏱")
-	# bot.send_message(message.chat.id, "/maylimi ruhsat birishim bermasligim uchun 🆗🚫")
-	# bot.send_message(message.chat.id, "/info uzingiz haqingizda malumon uchun 💁‍♂️💁")
-	# bot.send_message(message.chat.id, "/man_qaytta qayrdaligingizni bilish uchun ℹ️")
-	# bot.send_message(message.chat.id, "/img randomni rasim tashlayman 🏞🗾🌁🌃")
-	# bot.send_message(message.chat.id, "/ummon_link ummonni qushiqlarini silkasini beraman 😎")
-	# bot.send_message(message.chat.id, "/sinifdoshlar_instagrami sinifdoshlani instagramdaygi profillari 📱")
-	# bot.send_message(message.chat.id, "/hazil Birorta hazil tashlayman 😂")
+
 
 # --------------- commands------------#
+@bot.message_handler(commands=['havo'])
+def start_message(message):
+    data = requests.get(locaturl)
+    c = data.json()['current']
+    temp_c = c['temp_c']
+    temp_f = c['temp_f']
+    condition = c['condition']
+    text = condition['text']
+    icon = condition['icon']
+    bot.send_message(message.chat_id, str(temp_c) +'\n'+ str(temp_f) +'\n'+ str(text) +'\n'+ str(icon))
+    # pass
 
 @bot.message_handler(commands=['soat'])
 def start_message(message):
@@ -147,8 +156,6 @@ def send_ummon_link(message):
 @bot.message_handler(commands=['sinifdoshlar_instagrami'])
 def sinifdoshlar_ingtagtami(message):
 	bot.send_message(message.chat.id, 'SINIGDOSHLAR INSTAGRAMI 📺 \nBehruz😎 👉 https://www.instagram.com/behruz_1106_/ \nSanandar(Khabib)😏 👉 https://www.instagram.com/samandar_h0813/ \n Samandar 😃 👉 https://www.instagram.com/_samandar_haydarov_/ \n Bobur 🤠 👉 https://www.instagram.com/bobur_gr88/ \n Usmonjon 🤑 👉 https://www.instagram.com/usmonjo_2005_/ \n Behzod 🙂 👉 https://www.instagram.com/behzod_2005_/ \n Husan 🤨 👉 https://www.instagram.com/bokievkhusanzhon/ \n Ohunjon 😊 👉 https://www.instagram.com/ohun.jon09/ \n Mehruz 🧑‍💻 👉 https://www.instagram.com/mehruz_rahimi/ \n Ekhson 😝 👉 https://www.instagram.com/ekhson8146/' )
-    # 'SINIGDOSHLAR INSTAGRAMI 📺 \nBehruz😎 👉 https://www.instagram.com/behruz_1106_/ \nSanandar(Khabib)😏 👉 https://www.instagram.com/samandar_h0813/ \n Samandar 😃 👉 https://www.instagram.com/_samandar_haydarov_/ \n Bobur 🤠 👉 https://www.instagram.com/bobur_gr88/ \n Usmonjon 🤑 👉 https://www.instagram.com/usmonjo_2005_/ \n Behzod 🙂 👉 https://www.instagram.com/behzod_2005_/ \n Husan 🤨 👉 https://www.instagram.com/bokievkhusanzhon/ \n Ohunjon 😊 👉 https://www.instagram.com/ohun.jon09/ \n Mehruz 🧑‍💻 👉 https://www.instagram.com/mehruz_rahimi/ \n Ekhson 😝 👉 https://www.instagram.com/ekhson8146/ \n '
-    # bot.send_message(message.chat_id, 'SINIGDOSHLAR INSTAGRAMI 📺 \nBehruz😎 👉 https://www.instagram.com/behruz_1106_/ \nSanandar(Khabib)😏 👉 https://www.instagram.com/samandar_h0813/ \n Samandar 😃 👉 https://www.instagram.com/_samandar_haydarov_/ \n Bobur 🤠 👉 https://www.instagram.com/bobur_gr88/ \n Usmonjon 🤑 👉 https://www.instagram.com/usmonjo_2005_/ \n Behzod 🙂 👉 https://www.instagram.com/behzod_2005_/ \n Husan 🤨 👉 https://www.instagram.com/bokievkhusanzhon/ \n Ohunjon 😊 👉 https://www.instagram.com/ohun.jon09/ \n Mehruz 🧑‍💻 👉 https://www.instagram.com/mehruz_rahimi/ \n Ekhson 😝 👉 https://www.instagram.com/ekhson8146/')
 
 # text commands 
 
