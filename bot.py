@@ -59,7 +59,7 @@ def rendo():
 @bot.message_handler(commands=['help'])
 def start_message(message):
 
-	bot.send_message(message.chat.id, "/soat soatni bilish uchun ⏱ \n/maylimi ruhsat birishim bermasligim uchun 🆗🚫 \n/info uzingiz haqingizda malumon uchun 💁‍♂️💁 \n/man_qaytta qayrdaligingizni bilish uchun ℹ️ \n/img randomni rasim tashlayman 🏞🗾🌁🌃\n/ummon_link ummonni qushiqlarini silkasini beraman 😎 \n/sinifdoshlar_instagrami sinifdoshlani instagramdaygi profillari 📱\n/hazil Birorta hazil tashlayman 😂")
+	bot.send_message(message.chat.id, "/soat soatni bilish uchun ⏱ \n/maylimi ruhsat birishim bermasligim uchun 🆗🚫 \n/info uzingiz haqingizda malumon uchun 💁‍♂️💁 \n/man_qaytta qayrdaligingizni bilish uchun ℹ️ \n/img randomni rasim tashlayman 🏞🗾🌁🌃\n/ummon_link ummonni qushiqlarini silkasini beraman 😎 \n/sinifdoshlar_instagrami sinifdoshlani instagramdaygi profillari 📱\n/hazil Birorta hazil tashlayman 😂 \n/havo Gulakandozdaygi obu havoni bilish uchin 🌤🌥 ")
 
 
 # --------------- commands------------#
