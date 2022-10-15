@@ -7,9 +7,13 @@ from PIL import Image
 from telebot import types 
 import random
 from datetime import datetime
+import pyqrcode
 
 # Vorebls 
-sukinishla = ['']
+sukinishla = [
+    ''
+]
+is_code = False
 hazilla = [
     'Salom boja, qalaysiz,\nNega moylov silaysiz?\nАytgancha, moylov oshni,\nOsmasdan qovoq-qoshni,\nQilib bersangiz tezroq,\nOzidan kopi sozroq.' , 
     'Bazi qogozdagi hisobotlar strelkasiz soatga oxshaydi.\nRaqamlar boru, manosi yoq!', 
@@ -155,6 +159,11 @@ def stop_echo_message(message):
     is_echo = True
     bot.send_message(message.chat.id, str(is_echo))
 
+@bot.message_handler(commands=['code'])
+def code_qr(message):
+    is_echo = True
+    bot.send_message(message.chat.id, 'Yozuvlarini tashlanglar')
+
 # Sent Ummon songs
 
 @bot.message_handler(commands=['ummon_link'])
@@ -171,6 +180,11 @@ def sinifdoshlar_ingtagtami(message):
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
+    if is_code == True:
+        is_code = False
+        qr = pyqrcode.create(message.text)
+        bot.send_chat_action(message.chat.id, 'upload_photo')
+        bot.send_photo(message.chat.id, qr, reply_to_message_id=message.chat.id)
     if message.text == "нахуй" or message.text == "Пашол" or message.text == "Хе онени" or message.text == "далбаёб" or message.text == "пидарас":
         bot.send_message(message.chat.id, message.from_user.first_name+" Сукинма !!! 😡🤬")
 
