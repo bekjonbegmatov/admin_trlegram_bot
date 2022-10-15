@@ -180,6 +180,7 @@ def sinifdoshlar_ingtagtami(message):
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
+    global is_code
     if is_code == True:
         is_code = False
         qr = pyqrcode.create(message.text)
