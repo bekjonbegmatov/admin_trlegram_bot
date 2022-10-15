@@ -139,7 +139,7 @@ def start_message(message):
 
 @bot.message_handler(commands=['img'])
 def image_message(message):
-    img_url = "https://random.imagecdn.app/500/150"
+    img_url = "https://random.imagecdn.app/500/500"
     img = requests.get(img_url).content
     bot.send_chat_action(message.chat.id, 'upload_photo')
     bot.send_photo(message.chat.id, img, reply_to_message_id=message.chat.id)
