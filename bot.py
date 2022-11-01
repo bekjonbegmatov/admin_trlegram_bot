@@ -8,7 +8,7 @@ from telebot import types
 import random
 from datetime import datetime
 import pyqrcode
-
+from telebot import types
 # Vorebls 
 sukinishla = [
     ''
@@ -62,7 +62,7 @@ def rendo():
 # Send instruction about this bot
 @bot.message_handler(commands=['help'])
 def start_message(message):
-
+    
 	bot.send_message(message.chat.id, "/soat soatni bilish uchun ⏱ \n/maylimi ruhsat birishim bermasligim uchun 🆗🚫 \n/info uzingiz haqingizda malumon uchun 💁‍♂️💁 \n/man_qaytta qayrdaligingizni bilish uchun ℹ️ \n/img randomni rasim tashlayman 🏞🗾🌁🌃\n/ummon_link ummonni qushiqlarini silkasini beraman 😎 \n/sinifdoshlar_instagrami sinifdoshlani instagramdaygi profillari 📱\n/hazil Birorta hazil tashlayman 😂 \n/havo Gulakandozdaygi obu havoni bilish uchin 🌤🌥 ")
 
 
@@ -92,7 +92,13 @@ def start_message(message):
 @bot.message_handler(commands=['soat'])
 def start_message(message):
 	bot.send_message(message.chat.id,'хозир соат ' + time()  )
-
+    
+@bot.message_handler(content_types='text')
+def button_message(message):
+    markup=types.ReplyKeyboardMarkup(resize_keyboard=True)
+    item1=types.KeyboardButton("/help")
+    markup.add(item1)
+    bot.send_message(message.chat.id,'"/soat soatni bilish uchun ⏱ \n/maylimi ruhsat birishim bermasligim uchun 🆗🚫 \n/info uzingiz haqingizda malumon uchun 💁‍♂️💁 \n/man_qaytta qayrdaligingizni bilish uchun ℹ️ \n/img randomni rasim tashlayman 🏞🗾🌁🌃\n/ummon_link ummonni qushiqlarini silkasini beraman 😎 \n/sinifdoshlar_instagrami sinifdoshlani instagramdaygi profillari 📱\n/hazil Birorta hazil tashlayman 😂 \n/havo Gulakandozdaygi obu havoni bilish uchin 🌤🌥 "',reply_markup=markup)
 # Return Funny str 
 
 @bot.message_handler(commands=['hazil'])
